@@ -228,7 +228,7 @@
         <div class="role" id="ui_role">Martha Hotel • Transkore</div>
 
         <div class="actions">
-          <a id="downloadBtn" class="btn primary" href="#" download="Billy_A_Mfura_MarthaHotel_Transkore.vcf">Save Contact</a>
+          <a id="downloadBtn" class="btn primary" href="Billy_A_Mfura_MarthaHotel_Transkore.vcf" download="Billy_A_Mfura_MarthaHotel_Transkore.vcf">Save Contact</a>
           <button id="copyBtn" class="btn" type="button">Copy main phone</button>
         </div>
       </header>
@@ -267,7 +267,7 @@
 
           <div class="item wide">
             <div class="k">Martha Hotel Address</div>
-            <p class="v" id="ui_addressMartha">84, Chaussée Prince Louis Rwagasore, Bujumbura, Burundi</p>
+            <p class="v" id="ui_addressMartha">84, Chaussée Prince Louis Rwagasore, Bujumbura, Burundi, B.P. 2551</p>
           </div>
 
           <div class="item wide">
@@ -322,6 +322,7 @@
       marthaAddressLine: "84, Chaussée Prince Louis Rwagasore",
       marthaCity: "Bujumbura",
       marthaCountry: "Burundi",
+      marthaPoBox: "B.P. 2551",
 
       usaAddressLine: "25234 Quiet Ledge",
       usaCityStateZip: "Porter, TX 77365",
@@ -363,7 +364,7 @@
       sm.textContent = CONTACT.websiteMarthaDisplay;
 
       document.getElementById("ui_addressMartha").textContent =
-        `${CONTACT.marthaAddressLine}, ${CONTACT.marthaCity}, ${CONTACT.marthaCountry}`;
+        `${CONTACT.marthaAddressLine}, ${CONTACT.marthaCity}, ${CONTACT.marthaCountry}, ${CONTACT.marthaPoBox}`;
 
       document.getElementById("ui_addressUSA").textContent =
         `${CONTACT.usaAddressLine}, ${CONTACT.usaCityStateZip}, ${CONTACT.usaCountry}`;
@@ -398,7 +399,7 @@
         `URL:${CONTACT.websiteTranskore}`,
 
         // Addresses
-        `ADR;TYPE=WORK:;;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry}`,
+        `ADR;TYPE=WORK:${CONTACT.marthaPoBox};;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry}`,
         `ADR;TYPE=HOME:;;${CONTACT.usaAddressLine};${CONTACT.usaCityStateZip};;;${CONTACT.usaCountry}`,
 
         "END:VCARD"
@@ -435,7 +436,18 @@
 
     // Init
     applyContactToUI();
-    window.addEventListener("load", triggerDownload);
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const url = makeVcfBlobUrl(buildVCard());
+      const a = document.getElementById("downloadBtn");
+      a.href = url;
+      document.getElementById("toast").classList.add("show");
+      setTimeout(() => URL.revokeObjectURL(url), 15000);
+    });
+    window.addEventListener("load", () => {
+      if (sessionStorage.getItem("vcardAutoDownloaded")) return;
+      sessionStorage.setItem("vcardAutoDownloaded", "1");
+      triggerDownload();
+    });
   </script>
 </body>
 </html>
