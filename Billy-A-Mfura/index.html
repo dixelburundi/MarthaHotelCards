@@ -3,18 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Martha Hotel — Contact</title>
+  <title>Billy A. Mfura — Contact</title>
   <meta name="theme-color" content="#185878" />
 
   <style>
-    /* =========================
-       THEME COLORS (Martha Hotel)
-       ========================= */
     :root{
-      --blue:#185878;   /* deep blue */
-      --sky:#70B8D8;    /* light blue */
-      --gold:#E0D167;   /* gold */
-      --pale:#A8D0E0;   /* pale stripe */
+      --blue:#185878;
+      --sky:#70B8D8;
+      --gold:#E0D167;
+      --pale:#A8D0E0;
 
       --bg:#F6F8FB;
       --ink:#0B1B26;
@@ -51,7 +48,6 @@
       overflow:hidden;
     }
 
-    /* Top brand stripes (IMPORTANT) */
     .brandStripes{
       height:10px;
       display:grid;
@@ -62,7 +58,6 @@
     .brandStripes .s3{background:var(--pale)}
     .brandStripes .s4{background:var(--blue)}
 
-    /* Header */
     .topbar{
       padding:18px 16px 14px;
       background: linear-gradient(180deg, rgba(24,88,120,.08), rgba(112,184,216,.10));
@@ -70,34 +65,16 @@
       text-align:center;
     }
 
-    /* Logo centered with white background behind it */
-    .logoPlate{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:#fff;
-      border:1px solid rgba(24,88,120,.14);
-      border-radius:16px;
-      padding:12px 14px;
-      box-shadow: 0 10px 22px rgba(13,28,42,.10);
-      margin-top:4px;
-    }
-    .logoPlate img{
-      width:170px; /* desktop */
-      height:auto;
-      display:block;
-    }
-
     .name{
-      margin:14px 0 0;
+      margin:6px 0 0;
       font-size:26px;
       line-height:1.15;
       letter-spacing:.2px;
     }
     .role{
-      margin:7px 0 0;
+      margin:8px 0 0;
       color:var(--muted);
-      font-weight:650;
+      font-weight:750;
     }
 
     .actions{
@@ -133,7 +110,6 @@
     }
     .btn.primary:hover{background:#144a64}
 
-    /* Body */
     .body{padding:16px}
 
     .grid{
@@ -192,10 +168,8 @@
       text-align:center;
     }
 
-    /* Mobile */
     @media (max-width: 640px){
       .wrap{max-width:560px}
-      .logoPlate img{width:190px}
       .grid{grid-template-columns:1fr}
       .btn{width:100%}
       .topbar{padding:18px 14px 14px}
@@ -207,28 +181,16 @@
   <div class="wrap">
     <section class="card">
 
-      <!-- Brand stripes -->
       <div class="brandStripes" aria-hidden="true">
         <div class="s1"></div><div class="s2"></div><div class="s3"></div><div class="s4"></div>
       </div>
 
       <header class="topbar">
-        <div class="logoPlate">
-          <img
-            src="assets/martha-hotel-logo.png"
-            alt="Martha Hotel logo"
-            width="450"
-            height="240"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
-
         <h1 class="name" id="ui_fullName">Billy A. Mfura</h1>
-        <div class="role" id="ui_role">Martha Hotel • Transkore</div>
+        <div class="role" id="ui_role">Martha Hotel / Transkore.Inc</div>
 
         <div class="actions">
-          <a id="downloadBtn" class="btn primary" href="Billy_A_Mfura_MarthaHotel_Transkore.vcf" download="Billy_A_Mfura_MarthaHotel_Transkore.vcf">Save Contact</a>
+          <a id="downloadBtn" class="btn primary" href="#" download="Billy_A_Mfura_MarthaHotel_Transkore.vcf">Save Contact</a>
           <button id="copyBtn" class="btn" type="button">Copy main phone</button>
         </div>
       </header>
@@ -262,7 +224,11 @@
 
           <div class="item">
             <div class="k">Website (Martha)</div>
-            <p class="v"><a id="ui_siteMartha" href="https://www.martha-hotel.com" target="_blank" rel="noopener">www.martha-hotel.com</a></p>
+            <p class="v">
+              <a id="ui_siteMartha" href="https://www.martha-hotel.com" target="_blank" rel="noopener">
+                www.martha-hotel.com
+              </a>
+            </p>
           </div>
 
           <div class="item wide">
@@ -273,6 +239,11 @@
           <div class="item wide">
             <div class="k">USA Address</div>
             <p class="v" id="ui_addressUSA">25234 Quiet Ledge, Porter, TX 77365, USA</p>
+          </div>
+
+          <div class="item wide">
+            <div class="k">Filing ID (Transkore.Inc)</div>
+            <p class="v" id="ui_filingId">2018-000809918</p>
           </div>
         </div>
 
@@ -292,13 +263,19 @@
     const CONTACT = {
       fullName: "Billy A. Mfura",
 
-      // Roles
+      // Display under name
+      subtitle: "Martha Hotel / Transkore.Inc",
+
+      // Roles (for vCard TITLE)
       titleMartha: "General Manager",
-      titleTranskore: "Co-Founder & Managing Director",
+      titleTranskore: "Co-founder and Managing Director",
 
       // Organizations
       orgMartha: "Martha Hotel",
-      orgTranskore: "Transkore",
+      orgTranskore: "Transkore.INC",
+
+      // Filing (Transkore)
+      filingId: "2018-000809918",
 
       // Phones
       phoneBurundiMain: "+25776386000",
@@ -315,8 +292,8 @@
       // Websites
       websiteMartha: "https://www.martha-hotel.com",
       websiteMarthaDisplay: "www.martha-hotel.com",
-      websiteTranskore: "https://www.transkore.com", // change if needed
-      websiteTranskoreDisplay: "www.transkore.com",  // change if needed
+      websiteTranskore: "https://www.transkore.com",
+      websiteTranskoreDisplay: "www.transkore.com",
 
       // Addresses
       marthaAddressLine: "84, Chaussée Prince Louis Rwagasore",
@@ -331,13 +308,9 @@
       vcfFileName: "Billy_A_Mfura_MarthaHotel_Transkore.vcf"
     };
 
-    /* =========================================================
-       UI + vCard logic (no need to edit below normally)
-       ========================================================= */
     function applyContactToUI() {
       document.getElementById("ui_fullName").textContent = CONTACT.fullName;
-      document.getElementById("ui_role").textContent =
-        `${CONTACT.orgMartha} • ${CONTACT.orgTranskore}`;
+      document.getElementById("ui_role").textContent = CONTACT.subtitle;
 
       const phoneA = document.getElementById("ui_phoneLink");
       phoneA.href = `tel:${CONTACT.phoneBurundiMain}`;
@@ -369,6 +342,8 @@
       document.getElementById("ui_addressUSA").textContent =
         `${CONTACT.usaAddressLine}, ${CONTACT.usaCityStateZip}, ${CONTACT.usaCountry}`;
 
+      document.getElementById("ui_filingId").textContent = CONTACT.filingId;
+
       document.getElementById("downloadBtn").setAttribute("download", CONTACT.vcfFileName);
     }
 
@@ -377,13 +352,12 @@
         "BEGIN:VCARD",
         "VERSION:3.0",
 
-        // Name (kept explicit)
         "N:Mfura;Billy;A.;;;",
         `FN:${CONTACT.fullName}`,
 
-        // Organizations & titles
+        // Organizations & titles (as you requested)
         `ORG:${CONTACT.orgMartha};${CONTACT.orgTranskore}`,
-        `TITLE:${CONTACT.titleMartha} / ${CONTACT.titleTranskore}`,
+        `TITLE:${CONTACT.titleMartha} - ${CONTACT.orgMartha} / ${CONTACT.titleTranskore} - ${CONTACT.orgTranskore}`,
 
         // Phones
         `TEL;TYPE=CELL:${CONTACT.phoneBurundiMain}`,
@@ -394,13 +368,16 @@
         `EMAIL;TYPE=WORK:${CONTACT.emailMartha}`,
         `EMAIL;TYPE=WORK:${CONTACT.emailTranskore}`,
 
-        // Websites (many phones only show the first URL, but we keep both)
+        // Websites
         `URL:${CONTACT.websiteMartha}`,
         `URL:${CONTACT.websiteTranskore}`,
 
         // Addresses
-        `ADR;TYPE=WORK:${CONTACT.marthaPoBox};;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry}`,
+        `ADR;TYPE=WORK:;;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry} ${CONTACT.marthaPoBox}`,
         `ADR;TYPE=HOME:;;${CONTACT.usaAddressLine};${CONTACT.usaCityStateZip};;;${CONTACT.usaCountry}`,
+
+        // Filing info included
+        `NOTE:Filing ID: ${CONTACT.filingId}`,
 
         "END:VCARD"
       ].join("\r\n");
@@ -415,10 +392,8 @@
       const url = makeVcfBlobUrl(buildVCard());
       const a = document.getElementById("downloadBtn");
       a.href = url;
-
       a.click();
       document.getElementById("toast").classList.add("show");
-
       setTimeout(() => URL.revokeObjectURL(url), 15000);
     }
 
@@ -436,6 +411,8 @@
 
     // Init
     applyContactToUI();
+
+    // Ensure button always downloads the live-generated vCard
     document.getElementById("downloadBtn").addEventListener("click", () => {
       const url = makeVcfBlobUrl(buildVCard());
       const a = document.getElementById("downloadBtn");
@@ -443,6 +420,8 @@
       document.getElementById("toast").classList.add("show");
       setTimeout(() => URL.revokeObjectURL(url), 15000);
     });
+
+    // Auto-download once per session
     window.addEventListener("load", () => {
       if (sessionStorage.getItem("vcardAutoDownloaded")) return;
       sessionStorage.setItem("vcardAutoDownloaded", "1");
