@@ -355,40 +355,41 @@
 
       document.getElementById("downloadBtn").setAttribute("download", CONTACT.vcfFileName);
     }
+function buildVCard() {
+  return [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
 
-    function buildVCard() {
-      return [
-        "BEGIN:VCARD",
-        "VERSION:3.0",
+    "N:Mfura;Billy;A.;;;",
+    `FN:${CONTACT.fullName}`,
 
-        "N:Mfura;Billy;A.;;;",
-        `FN:${CONTACT.fullName}`,
+    // Organizations & titles
+    `ORG:${CONTACT.orgMartha};${CONTACT.orgTranskore}`,
+    `TITLE:${CONTACT.titleMartha} - ${CONTACT.orgMartha} / ${CONTACT.titleTranskore} - ${CONTACT.orgTranskore}`,
 
-        // Organizations & titles
-        `TITLE:${CONTACT.titleMartha} - ${CONTACT.orgMartha} / ${CONTACT.titleTranskore} - ${CONTACT.orgTranskore}
+    // Phones
+    `TEL;TYPE=CELL:${CONTACT.phoneBurundiMain}`,
+    `TEL;TYPE=WORK:${CONTACT.phoneBurundiOffice}`,
+    `TEL;TYPE=CELL:${CONTACT.phoneUSA}`,
 
-        // Phones
-        `TEL;TYPE=CELL:${CONTACT.phoneBurundiMain}`,
-        `TEL;TYPE=WORK:${CONTACT.phoneBurundiOffice}`,
-        `TEL;TYPE=CELL:${CONTACT.phoneUSA}`,
+    // Emails
+    `EMAIL;TYPE=WORK:${CONTACT.emailMartha}`,
+    `EMAIL;TYPE=WORK:${CONTACT.emailTranskore}`,
 
-        // Emails
-        `EMAIL;TYPE=WORK:${CONTACT.emailMartha}`,
-        `EMAIL;TYPE=WORK:${CONTACT.emailTranskore}`,
+    // Website (Martha only)
+    `URL:${CONTACT.websiteMartha}`,
 
-        // Website (Martha only)
-        `URL:${CONTACT.websiteMartha}`,
+    // Addresses (B.P. at end)
+    `ADR;TYPE=WORK:;;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry} ${CONTACT.marthaPoBox}`,
+    `ADR;TYPE=HOME:;;${CONTACT.usaAddressLine};${CONTACT.usaCityStateZip};;;${CONTACT.usaCountry}`,
 
-        // Addresses (B.P. at end)
-        `ADR;TYPE=WORK:;;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry} ${CONTACT.marthaPoBox}`,
-        `ADR;TYPE=HOME:;;${CONTACT.usaAddressLine};${CONTACT.usaCityStateZip};;;${CONTACT.usaCountry}`,
+    // Notes
+    `NOTE:Filing ID: ${CONTACT.filingId}`,
 
-        // Notes
-        `NOTE:Filing ID: ${CONTACT.filingId}
+    "END:VCARD"
+  ].join("\r\n");
+}
 
-        "END:VCARD"
-      ].join("\r\n");
-    }
 
     function makeVcfBlobUrl(vcardText) {
       const blob = new Blob([vcardText], { type: "text/vcard;charset=utf-8" });
@@ -437,6 +438,7 @@
   </script>
 </body>
 </html>
+
 
 
 
