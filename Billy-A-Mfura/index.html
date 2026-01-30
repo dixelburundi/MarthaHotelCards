@@ -245,6 +245,13 @@
             <div class="k">Filing ID (Transkore.Inc)</div>
             <p class="v" id="ui_filingId">2018-000809918</p>
           </div>
+
+          <div class="item wide">
+            <div class="k">General Info</div>
+            <p class="v" id="ui_generalInfo">
+              GENERAL MANAGER - MARTHA HOTEL / CO-FOUNDER AND MANAGING DIRECTOR - TRANSKORE.INC - TRANSKORE.INC
+            </p>
+          </div>
         </div>
 
         <div id="toast" class="toast">Contact saved. If nothing happened, press “Save Contact”.</div>
@@ -267,15 +274,18 @@
       subtitle: "Martha Hotel / Transkore.Inc",
 
       // Roles (for vCard TITLE)
-      titleMartha: "General Manager",
-      titleTranskore: "Co-founder and Managing Director",
+      titleMartha: "GENERAL MANAGER",
+      titleTranskore: "CO-FOUNDER AND MANAGING DIRECTOR",
 
       // Organizations
-      orgMartha: "Martha Hotel",
-      orgTranskore: "Transkore.INC",
+      orgMartha: "MARTHA HOTEL",
+      orgTranskore: "TRANSKORE.INC",
 
       // Filing (Transkore)
       filingId: "2018-000809918",
+
+      // General info line (for page + vCard note)
+      generalInfo: "GENERAL MANAGER - MARTHA HOTEL / CO-FOUNDER AND MANAGING DIRECTOR - TRANSKORE.INC - TRANSKORE.INC",
 
       // Phones
       phoneBurundiMain: "+25776386000",
@@ -289,11 +299,9 @@
       emailMartha: "billy@martha-hotel.com",
       emailTranskore: "billy.mfura@transkore.com",
 
-      // Websites
+      // Websites (Transkore removed as requested)
       websiteMartha: "https://www.martha-hotel.com",
       websiteMarthaDisplay: "www.martha-hotel.com",
-      websiteTranskore: "https://www.transkore.com",
-      websiteTranskoreDisplay: "www.transkore.com",
 
       // Addresses
       marthaAddressLine: "84, Chaussée Prince Louis Rwagasore",
@@ -343,6 +351,7 @@
         `${CONTACT.usaAddressLine}, ${CONTACT.usaCityStateZip}, ${CONTACT.usaCountry}`;
 
       document.getElementById("ui_filingId").textContent = CONTACT.filingId;
+      document.getElementById("ui_generalInfo").textContent = CONTACT.generalInfo;
 
       document.getElementById("downloadBtn").setAttribute("download", CONTACT.vcfFileName);
     }
@@ -355,9 +364,9 @@
         "N:Mfura;Billy;A.;;;",
         `FN:${CONTACT.fullName}`,
 
-        // Organizations & titles (as you requested)
+        // Organizations & titles
         `ORG:${CONTACT.orgMartha};${CONTACT.orgTranskore}`,
-        `TITLE:${CONTACT.titleMartha} - ${CONTACT.orgMartha} / ${CONTACT.titleTranskore} - ${CONTACT.orgTranskore}`,
+        `TITLE:${CONTACT.titleMartha} - ${CONTACT.orgMartha} / ${CONTACT.titleTranskore} - ${CONTACT.orgTranskore} - ${CONTACT.orgTranskore}`,
 
         // Phones
         `TEL;TYPE=CELL:${CONTACT.phoneBurundiMain}`,
@@ -368,16 +377,15 @@
         `EMAIL;TYPE=WORK:${CONTACT.emailMartha}`,
         `EMAIL;TYPE=WORK:${CONTACT.emailTranskore}`,
 
-        // Websites
+        // Website (Martha only)
         `URL:${CONTACT.websiteMartha}`,
-        `URL:${CONTACT.websiteTranskore}`,
 
-        // Addresses
+        // Addresses (B.P. at end)
         `ADR;TYPE=WORK:;;${CONTACT.marthaAddressLine};${CONTACT.marthaCity};;;${CONTACT.marthaCountry} ${CONTACT.marthaPoBox}`,
         `ADR;TYPE=HOME:;;${CONTACT.usaAddressLine};${CONTACT.usaCityStateZip};;;${CONTACT.usaCountry}`,
 
-        // Filing info included
-        `NOTE:Filing ID: ${CONTACT.filingId}`,
+        // Notes
+        `NOTE:Filing ID: ${CONTACT.filingId} | ${CONTACT.generalInfo}`,
 
         "END:VCARD"
       ].join("\r\n");
