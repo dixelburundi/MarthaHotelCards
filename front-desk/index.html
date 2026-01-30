@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Martha Hotel — Front Desk</title>
+    <meta name="theme-color" content="#185878" />
+
+    <style>
+      :root {
+        --blue: #185878;
+        --sky: #70b8d8;
+        --gold: #e0d167;
+        --pale: #a8d0e0;
+        --bg: #f6f8fb;
+        --ink: #0b1b26;
+        --muted: #5b6b78;
+        --card: #ffffff;
+        --line: rgba(24, 88, 120, 0.16);
+        --shadow: 0 16px 44px rgba(13, 28, 42, 0.12);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        background:
+          radial-gradient(
+            1100px 650px at 10% 0%,
+            rgba(112, 184, 216, 0.25),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 520px at 95% 12%,
+            rgba(224, 209, 103, 0.18),
+            transparent 50%
+          ),
+          linear-gradient(180deg, #fff, var(--bg));
+        color: var(--ink);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 22px 14px;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 760px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        border: 1px solid rgba(24, 88, 120, 0.1);
+      }
+
+      .brandStripes {
+        height: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .s1 {
+        background: var(--gold);
+      }
+      .s2 {
+        background: var(--sky);
+      }
+      .s3 {
+        background: var(--pale);
+      }
+      .s4 {
+        background: var(--blue);
+      }
+
+      .topbar {
+        padding: 18px 16px 14px;
+        background: linear-gradient(
+          180deg,
+          rgba(24, 88, 120, 0.08),
+          rgba(112, 184, 216, 0.1)
+        );
+        border-bottom: 1px solid rgba(24, 88, 120, 0.1);
+        text-align: center;
+      }
+
+      .logoPlate {
+        display: inline-flex;
+        background: #fff;
+        border: 1px solid rgba(24, 88, 120, 0.14);
+        border-radius: 16px;
+        padding: 12px 14px;
+        box-shadow: 0 10px 22px rgba(13, 28, 42, 0.1);
+      }
+      .logoPlate img {
+        width: 170px;
+        height: auto;
+      }
+
+      h1 {
+        margin: 14px 0 0;
+        font-size: 26px;
+        line-height: 1.15;
+      }
+      .role {
+        margin-top: 6px;
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--blue);
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-weight: 750;
+        text-decoration: none;
+        cursor: pointer;
+        min-width: 160px;
+        text-align: center;
+      }
+      .btn.primary {
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .body {
+        padding: 16px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .item {
+        border: 1px solid rgba(24, 88, 120, 0.14);
+        border-radius: 14px;
+        padding: 12px;
+        background: linear-gradient(180deg, #fff, rgba(112, 184, 216, 0.06));
+      }
+      .k {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(24, 88, 120, 0.78);
+        font-weight: 850;
+        margin-bottom: 6px;
+      }
+      .v {
+        font-weight: 750;
+        overflow-wrap: anywhere;
+      }
+      .v a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(24, 88, 120, 0.4);
+      }
+      .wide {
+        grid-column: 1/-1;
+      }
+
+      @media (max-width: 640px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .logoPlate img {
+          width: 190px;
+        }
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <section class="card">
+        <div class="brandStripes">
+          <div class="s1"></div>
+          <div class="s2"></div>
+          <div class="s3"></div>
+          <div class="s4"></div>
+        </div>
+
+        <header class="topbar">
+          <div class="logoPlate">
+            <img src="assets/martha-hotel-logo.png" alt="Martha Hotel logo" />
+          </div>
+
+          <h1>FRONT DESK</h1>
+          <div class="role">Martha Hotel</div>
+
+          <div class="actions">
+            <a id="downloadBtn" class="btn primary" href="#">Save Contact</a>
+          </div>
+        </header>
+
+        <main class="body">
+          <div class="grid">
+            <div class="item">
+              <div class="k">Phone</div>
+              <div class="v">
+                <a href="tel:+25722273333">+257 22 273 333</a>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="k">Phone</div>
+              <div class="v">
+                <a href="tel:+25722278051">+257 22 278 051</a>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="k">Mobile</div>
+              <div class="v">
+                <a href="tel:+25771132132">+257 71 132 132</a>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="k">Email</div>
+              <div class="v">
+                <a href="mailto:info@martha-hotel.com">info@martha-hotel.com</a>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="k">Website</div>
+              <div class="v">
+                <a href="https://www.martha-hotel.com" target="_blank"
+                  >www.martha-hotel.com</a
+                >
+              </div>
+            </div>
+
+            <div class="item wide">
+              <div class="k">Address</div>
+              <div class="v">
+                84, Chaussée Prince Louis Rwagasore, <br />
+                Bujumbura, Burundi, B.P. 2551
+              </div>
+            </div>
+
+            <div class="item wide">
+              <div class="k">NIF</div>
+              <div class="v">4000009144</div>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+
+    <script>
+      /* =========================
+     AUTO vCARD DOWNLOAD
+     ========================= */
+      const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:FRONT DESK;Martha Hotel;;;",
+        "FN:Front Desk - Martha Hotel",
+        "ORG:Martha Hotel",
+        "TITLE:Front Desk",
+        "TEL;TYPE=WORK:+25722273333",
+        "TEL;TYPE=WORK:+25722278051",
+        "TEL;TYPE=CELL:+25771132132",
+        "EMAIL;TYPE=WORK:info@martha-hotel.com",
+        "URL:https://www.martha-hotel.com",
+        "ADR;TYPE=WORK:;;84, Chaussée Prince Louis Rwagasore,;Bujumbura;;Burundi; B.P. 2551",
+        "NOTE:NIF 4000009144",
+        "END:VCARD",
+      ].join("\r\n");
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+
+      const btn = document.getElementById("downloadBtn");
+      btn.href = url;
+      btn.setAttribute("download", "Martha_Hotel_Front_Desk.vcf");
+
+      // Auto download on page load
+      window.addEventListener("load", () => {
+        btn.click();
+      });
+    </script>
+  </body>
+</html>
